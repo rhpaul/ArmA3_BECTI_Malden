@@ -4,7 +4,7 @@ respawnDelay = 3;
 respawnDialog = false;
 
 //--- Require briefing.html to show up.
-onLoadMission = "BECTI 0.97 - Malden";
+onLoadMission = "BECTI 0.97 - Malden 2035";
 onLoadMissionTime = false;
 onLoadName = "BECTI 0.97";
 
