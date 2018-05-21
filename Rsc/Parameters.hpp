@@ -59,16 +59,28 @@ class Params {
 		texts[] = {"$900","$1500","$2400","$3200","$6000","$8000","$10000","$12500","$15000","$20000"};
 		default = 900;
 	};
+	class CTI_ECONOMY_INCOME_FACTOR_EAST {
+		title = "INCOME: Multiplier (East Players)";
+		values[] = {0.5, 1, 2, 3};
+		texts[] = {"0.5x","1x","2x","3x"};
+		default = 1;
+	};
 	class CTI_ECONOMY_INCOME_FACTOR_WEST {
 		title = "INCOME: Multiplier (West Players)";
 		values[] = {0.5, 1, 2, 3};
 		texts[] = {"0.5x","1x","2x","3x"};
 		default = 1;
 	};
-	class CTI_ECONOMY_INCOME_FACTOR_EAST {
-		title = "INCOME: Multiplier (East Players)";
-		values[] = {0.5, 1, 2, 3};
-		texts[] = {"0.5x","1x","2x","3x"};
+	class CTI_ECONOMY_BOUNTY_EAST {
+		title = "Bounty awarded to East Players (fraction of unit cost)";
+		values[] = {1, 2, 4, 8};
+		texts[] = {"0.15x","0.25x","0.5x","1x"};
+		default = 1;
+	};
+	class CTI_ECONOMY_BOUNTY_WEST {
+		title = "Bounty awarded to West Players (fraction of unit cost)";
+		values[] = {1, 2, 4, 8};
+		texts[] = {"0.15x","0.25x","0.5x","1x"};
 		default = 1;
 	};
 	class CTI_ECONOMY_TOWNS_OCCUPATION {
