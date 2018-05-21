@@ -4,9 +4,9 @@
 	Alias:			CTI_CO_FNC_OnUnitKilled
 	Description:	Triggered by the Killed EH whenever a unit/vehicle dies
 					Note this function can be called by an Event Handler (EH) or outside
-	Author: 		Benny
+	Author: 		Benny, Grimaldi
 	Creation Date:	18-09-2013
-	Revision Date:	18-09-2013
+	Revision Date:	21-05-2018
 	
   # PARAMETERS #
     0	[Object]: The killed entity
@@ -20,7 +20,7 @@
 	[KILLED, KILLER, SIDE ID] call CTI_CO_FNC_OnUnitKilled
 	
   # EXAMPLE #
-    _vehicle addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _side]];
+    _vehicle addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
 */
 
 _killed = _this select 0;
