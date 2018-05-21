@@ -23,17 +23,25 @@
     _income = (West) call CTI_CO_FNC_GetTownsResources
 */
 
-private ["_hostiles", "_near", "_occupation_upgrade", "_side", "_sideID", "_total_values", "_unoccupied", "_upgrades", "_value"];
+private ["_hostiles", "_near", "_occupation_upgrade", "_side", "_sideID", "_total_values", "_income_bonus", "_unoccupied", "_upgrades", "_value"];
 
 _side = _this;
 _total_values = 0;
+
 
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 _occupation_upgrade = _upgrades select CTI_UPGRADE_TOWNS;
 
+
 {
 	if (_x getVariable "cti_town_sideID" == _sideID) then {
+		if (_sideID == CTI_WEST_ID) then {
+			_income_bonus = CTI_ECONOMY_INCOME_FACTOR_WEST;
+		} else {
+			_income_bonus = CTI_ECONOMY_INCOME_FACTOR_EAST;
+		};
+
 		_value = _x getVariable "cti_town_value";
 		
 		if (missionNamespace getVariable "CTI_ECONOMY_TOWNS_OCCUPATION" == 1) then { //--- Town occupation is active
@@ -49,7 +57,7 @@ _occupation_upgrade = _upgrades select CTI_UPGRADE_TOWNS;
 			};
 		};
 		
-		_value = _value * CTI_TOWNS_INCOME_RATIO; //--- Add in the extra ratio
+		_value = _value * CTI_TOWNS_INCOME_RATIO * _income_bonus; //--- Add in the extra ratio
 		_total_values = _total_values + round(_value);
 	};
 } forEach CTI_Towns;

@@ -40,11 +40,12 @@ private ["_groups", "_pool", "_pool_group_size", "_pool_units", "_positions", "_
 _town = _this;
 
 _value = _town getVariable "cti_town_value";
-_resistanceSize = round(_value * CTI_TOWNS_RESISTANCE_GROUPS_RATIO);
+_resistanceSize = round(_value * CTI_TOWNS_RESISTANCE_GROUPS_RATIO * CTI_TOWNS_RESISTANCE);
 
 //--- Add an extra group for large towns.
-if (_value >= 350) then { _resistanceSize = _resistanceSize + 8 };
-_totalGroups = round(_resistanceSize / 12 + 1);
+if ((_value >= 350) && (CTI_TOWNS_RESISTANCE > 0)) then { _resistanceSize = _resistanceSize + 8 };
+if (CTI_TOWNS_RESISTANCE > 0) then { _totalGroups = round(_resistanceSize / 12 + 1 )}
+else {_totalGroups = 0};
 
 // switch value...
 _pool_units = [];
