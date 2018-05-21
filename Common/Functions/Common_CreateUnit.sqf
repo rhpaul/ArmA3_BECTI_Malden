@@ -6,9 +6,9 @@
 					Note that making a unit public with the _net variable will make it
 					undergo the function CTI_CO_FNC_InitializeNetVehicle
 					A public unit is initialized for all (+JIP) but the server
-	Author: 		Benny
+	Author: 		Benny, Grimaldi
 	Creation Date:	16-09-2013
-	Revision Date:	16-09-2013
+	Revision Date:	21-05-2018
 	
   # PARAMETERS #
     0	[String]: The type of unit to create
@@ -42,8 +42,6 @@ _classname = _this select 0;
 _team = _this select 1;
 _position = _this select 2;
 _sideID = _this select 3;
-//DEbug
-//player sidechat format ["%1",_sideID];
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 _net = if (count _this > 4) then {_this select 4} else {false};
 _special = if (count _this > 5) then {_this select 5} else {"FORM"};
