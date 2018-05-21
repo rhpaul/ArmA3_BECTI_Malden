@@ -22,7 +22,7 @@
   # EXAMPLE #
     _vehicle addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
 */
-
+_bounty = 0;
 _killed = _this select 0;
 _killer = _this select 1;
 _sideID_killed = _this select 2;
@@ -53,6 +53,7 @@ if (_isvehicle_killed) then {
 };
 
 _side_killer = side _killer;
+_sideID_killer = (_side_killer) call CTI_CO_FNC_GetSideID;
 _group_killed = group _killed;
 _group_killer = group _killer;
 _type_killed = typeOf _killed;
@@ -74,7 +75,7 @@ _var = missionNamespace getVariable _var_name;
 //todo check what happens when crew bails out. side become civ?!
 // this addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", 0]];this addEventHandler ["hit", {_this spawn CTI_CO_FNC_OnUnitHit}];
 // this addEventHandler ["getIn", {_this spawn CTI_CO_FNC_OnUnitGetOut}]; this addEventHandler ["getOut", {_this spawn CTI_CO_FNC_OnUnitGetOut}]; this setVariable ["cti_occupant", west call CTI_CO_FNC_GetSideFromID];
-// player sidechat format ["killed:%1 (%2)    killer:%3 (%4)",_killed, _side_killed,_killer, _side_killer];
+//player sidechat format ["killed:%1 (%2)    killer:%3 (%4)",_killed, _side_killed,_killer, _side_killer];
 if (!isNil '_var' && _isplayable_killer) then {
 	_cost = _var select CTI_UNIT_PRICE;
 	
@@ -96,7 +97,12 @@ if (!isNil '_var' && _isplayable_killer) then {
 				};
 				
 				//--- If there is more than one group to award then we split the bounty equally
-				_bounty = round(_cost * CTI_VEHICLES_BOUNTY);
+				switch (_sideID_killer) do {
+					case CTI_WEST_ID: {_bounty = round(_cost * CTI_ECONOMY_BOUNTY_WEST/8)};
+					case CTI_EAST_ID: {_bounty = round(_cost * CTI_ECONOMY_BOUNTY_EAST/8);};
+					//case CTI_RESISTANCE: {_bounty = 0}; not sure if defined
+					default {_bounty = 0}
+				};
 				if (count _award_groups > 1) then { _bounty = round(_bounty / (count _award_groups))};
 				
 				//--- Award

@@ -1,3 +1,7 @@
+Grimaldi:
+[ ] add Parameter for bounty multiplier (maybe one for each faction), currently at .15
+
+
 [ ] reinforcements on cap (try to take the town back)
 [ ] transfer com
 [ ] ai respawn setter
