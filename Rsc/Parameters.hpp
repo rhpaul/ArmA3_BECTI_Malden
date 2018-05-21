@@ -9,13 +9,13 @@ class Params {
 		title = "ARTILLERY: Setup";
 		values[] = {-2,-1,0,1,2,3};
 		texts[] = {"Disabled","Ballistic Computer","Short","Medium","Long","Extreme"};
-		default = 0;
+		default = -1;
 	};
 	class CTI_BASE_HQ_REPAIR {
 		title = "BASE: HQ Repairable";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_BASE_FOB_MAX {
 		title = "BASE: FOB Limit";
@@ -59,6 +59,18 @@ class Params {
 		texts[] = {"$900","$1500","$2400","$3200","$6000","$8000","$10000","$12500","$15000","$20000"};
 		default = 900;
 	};
+	class CTI_ECONOMY_INCOME_FACTOR_WEST {
+		title = "INCOME: Multiplier (West Players)";
+		values[] = {0.5, 1, 2, 3};
+		texts[] = {"0.5x","1x","2x","3x"};
+		default = 1;
+	};
+	class CTI_ECONOMY_INCOME_FACTOR_EAST {
+		title = "INCOME: Multiplier (East Players)";
+		values[] = {0.5, 1, 2, 3};
+		texts[] = {"0.5x","1x","2x","3x"};
+		default = 1;
+	};
 	class CTI_ECONOMY_TOWNS_OCCUPATION {
 		title = "INCOME: Towns Occupation";
 		values[] = {0,1};
@@ -81,13 +93,19 @@ class Params {
 		title = "RESPAWN: Mobile";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_RESPAWN_TIMER {
 		title = "RESPAWN: Delay";
 		values[] = {15,20,25,30,35,40,45,50,55,60};
 		texts[] = {"15 Seconds","20 Seconds","25 Seconds","30 Seconds","35 Seconds","40 Seconds","45 Seconds","50 Seconds","55 Seconds","60 Seconds"};
-		default = 30;
+		default = 15;
+	};
+	class CTI_TOWNS_RESISTANCE {
+		title = "TOWNS: Level of Resistance";
+		values[] = {0,0.5,1,2,10};
+		texts[] = {"Disabled","Light","Normal","Heavy", "Insane"};
+		default = 1;
 	};
 	class CTI_TOWNS_OCCUPATION {
 		title = "TOWNS: Occupation";
@@ -129,7 +147,7 @@ class Params {
 		title = "UNITS: Vehicles Reycling Delay";
 		values[] = {60,120,180,240,300,600,1200,1800,2400,3000,3600};
 		texts[] = {"1 Minute","2 Minutes","3 Minutes","4 Minutes","5 Minutes","10 Minutes","20 Minutes","30 Minutes","40 Minutes","50 Minutes","1 Hour"};
-		default = 600;
+		default = 3600;
 	};
 	class CTI_GRAPHICS_TG_MAX {
 		title = "VISUAL: Terrain Grid";

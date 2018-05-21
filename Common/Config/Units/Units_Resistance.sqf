@@ -151,7 +151,14 @@ _s = _s + [""];
 
 
 
-
+_c = _c + ['I_MBT_03_cannon_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [2500];
+_t = _t + [30];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_HEAVY];
+_s = _s + [""];
 
 _c = _c + ['I_APC_Wheeled_03_cannon_F'];
 _p = _p + [''];
