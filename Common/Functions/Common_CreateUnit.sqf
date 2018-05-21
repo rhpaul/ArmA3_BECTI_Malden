@@ -6,9 +6,9 @@
 					Note that making a unit public with the _net variable will make it
 					undergo the function CTI_CO_FNC_InitializeNetVehicle
 					A public unit is initialized for all (+JIP) but the server
-	Author: 		Benny
+	Author: 		Benny, Grimaldi
 	Creation Date:	16-09-2013
-	Revision Date:	16-09-2013
+	Revision Date:	21-05-2018
 	
   # PARAMETERS #
     0	[String]: The type of unit to create
@@ -36,12 +36,13 @@
 	  -> Create a "B_Soldier_F" at the player's position, initialize it over the network and ignore the formation on creation
 */
 
-private ["_net", "_position", "_sideID", "_special", "_team", "_type", "_unit"];
+private ["_net", "_position", "_sideID", "_special", "_team", "_type", "_unit", "_side"];
 
 _classname = _this select 0;
 _team = _this select 1;
 _position = _this select 2;
 _sideID = _this select 3;
+_side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 _net = if (count _this > 4) then {_this select 4} else {false};
 _special = if (count _this > 5) then {_this select 5} else {"FORM"};
 
@@ -58,6 +59,6 @@ _unit setSkill (0.3 + (random 0.5));//tbd tweak
 if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
 
 //--- Add a Killed EH.
-// _unit addEventHandler ["killed", Format["[_this select 0, _this select 1, %1, 'vehicle'] Spawn WFBE_CO_FNC_OnUnitKilled;", _sideID]];
+_unit addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
 
 _unit
